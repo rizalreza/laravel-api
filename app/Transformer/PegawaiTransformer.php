@@ -6,9 +6,10 @@ class PegawaiTransformer extends TransformerAbstract {
  
     public function transform($pegawai) {
         return [
-            'No_Urut' => $pegawai->id,
-            'Nama_Pegawai' => $pegawai->name,
-            'Alamat_Pegawai' => $pegawai->address
+            'id' => $pegawai->id,
+            'Name' => $pegawai->name,
+            'Address' => $pegawai->address,
+            'No Reg' => $pegawai->no_reg
         ];
     }
  }

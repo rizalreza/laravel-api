@@ -27,7 +27,7 @@ Route::get('pegawai/{id}','PegawaiController@show');
 Route::delete('pegawai/{id}','PegawaiController@destroy');
 
 //Mengupdate existing task
-Route::put('pegawai','PegawaiController@store');
+Route::put('pegawai/{id}','PegawaiController@update');
 
 //Membuat data baru
-Route::post('task','PegawaiController@store');
+Route::post('pegawai','PegawaiController@store');	

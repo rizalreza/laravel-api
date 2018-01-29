@@ -53,28 +53,16 @@ class PegawaiController extends Controller
  
     }
 
-    public function store(Request $request)  {
-        if ($request->isMethod('put')) {
-            //Menapilkan pegawai
-            $pegawai = Pegawai::find($request->no_reg);
-            if (!$pegawi) {
-                return $this->response->errorNotFound('Task Not Found');
-            }
-        } else {
-            $pegawai = new Pegawai;
-        }
- 
-        $pegawai->id = $request->input('pegawai_id');
-        $pegawai->name = $request->input('name');
-        $pegawai->address = $request->input('address');
-        $pegawai->user_id =  1; //$request->user()->id;
- 
-        if($pegawai->save()) {
-            return $this->response->withItem($pegawai, new  PegawaiTransformer());
-        } else {
-             return $this->response->errorInternalError('Tidak bisa update pegawai');
-        }
- 
+    public function store(Request $request) {
+    
+             $pegawai = Pegawai::create($request->all());
+             return response()->json($pegawai, 201);
     }
 
+    public function update(Request $request, $id) {
+
+
+        $pegawai = Pegawai::find($id);
+        $pegawai->update($request->all());
+    }
 }
